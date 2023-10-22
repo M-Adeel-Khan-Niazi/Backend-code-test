@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/attendance/upload', 'AttendanceController@upload');
+Route::get('/attendance/{employee_id}', 'AttendanceController@show');

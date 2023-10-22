@@ -32,4 +32,11 @@ class AttendanceController extends Controller
             return response()->json($error->getMessage(), 400);
         }
     }
+
+    public function show($employee_id)
+    {
+        $attendances = $this->attendanceService->getAttendanceById($employee_id);
+        return response()->json($attendances);
+    }
+
 }
