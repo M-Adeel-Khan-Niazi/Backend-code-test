@@ -18,5 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/employees', 'EmployeeController@index');
+
 Route::post('/attendance/upload', 'AttendanceController@upload');
 Route::get('/attendance/{employee_id}', 'AttendanceController@show');
