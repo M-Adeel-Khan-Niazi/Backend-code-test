@@ -17,6 +17,10 @@ class CreateEmployeeTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('company_id');
+            $table->foreign('company_id')->references('id')->on('company')->cascadeOnDelete();
+            $table->string('company_group_id')->nullable();
+            $table->foreign('company_group_id')->references('id')->on('company_groups')->cascadeOnDelete();
             $table->timestamps();
         });
     }

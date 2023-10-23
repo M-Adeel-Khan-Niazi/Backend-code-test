@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocationTable extends Migration
+class CreateAssetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateLocationTable extends Migration
      */
     public function up()
     {
-        Schema::create('location', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('address');
-            $table->string('city');
-            $table->string('country');
+        Schema::create('assets', function (Blueprint $table) {
+            $table->id();
             $table->string('company_id');
             $table->foreign('company_id')->references('id')->on('company')->cascadeOnDelete();
             $table->timestamps();
@@ -31,6 +28,6 @@ class CreateLocationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location');
+        Schema::dropIfExists('assets');
     }
 }
