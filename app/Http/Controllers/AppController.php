@@ -31,4 +31,20 @@ class AppController extends Controller
         sort($duplicates);
         return response()->json(compact('duplicates'));
     }
+
+    public function groupByOwners(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'data' => 'required|array'
+        ]);
+        if ($validation->fails())
+            return response()->json($validation->messages(), 422);
+
+        $groupedOwners = [];
+        foreach ($request->data as $d => $owner) {
+            $groupedOwners[$owner][] = $d;
+        }
+        ksort($groupedOwners);
+        return response()->json(compact('groupedOwners'));
+    }
 }
