@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use AppHumanResources\Attendance\Application\AttendanceService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -10,7 +11,7 @@ class AttendanceController extends Controller
 {
     protected $attendanceService;
 
-    public function __construct(\AttendanceService $attendanceService)
+    public function __construct(AttendanceService $attendanceService)
     {
         $this->attendanceService = $attendanceService;
     }
@@ -36,7 +37,7 @@ class AttendanceController extends Controller
     public function show($employee_id)
     {
         $attendances = $this->attendanceService->getAttendanceById($employee_id);
-        return response()->json($attendances);
+        return response()->json(['attendances' => $attendances, 'message' => 'Attendance fetched successfully!']);
     }
 
 }
