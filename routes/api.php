@@ -22,3 +22,5 @@ Route::get('/employees', 'EmployeeController@index');
 
 Route::post('/attendance/upload', 'AttendanceController@upload');
 Route::get('/attendance/{employee_id}', 'AttendanceController@show');
+
+Route::post('/find-duplicates', 'AppController@findDuplicates');
